@@ -1,0 +1,13 @@
+{
+  "name": "Student",
+  "columns": [
+    {
+      "name": "id",
+      "type": "uint",
+    },
+    {
+      "name": "fullName",
+      "type": "string",
+    }
+  ]
+}
