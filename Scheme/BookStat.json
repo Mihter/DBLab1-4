@@ -1,0 +1,27 @@
+{
+  "name": "BookStatistics",
+  "columns": [
+    {
+      "name": "id",
+      "type": "uint"
+    },
+    {
+      "name": "StudentId",
+      "type": "uint",
+      "referencedTable": "Student"
+    },
+    {
+      "name": "BookId",
+      "type": "uint",
+      "referencedTable": "Book"
+    },
+    {
+      "name": "TakeDate",
+      "type": "DateOnly"
+    },
+    {
+      "name": "ReturnDate",
+      "type": "DateOnly"
+    }
+  ]
+}
