@@ -1,5 +1,7 @@
 ﻿
 
+using System.Reflection.PortableExecutable;
+
 namespace DBLab1
 {
     static class TableParser
@@ -130,18 +132,66 @@ namespace DBLab1
                 DateOnly takeDate, returnDate;
                 ReadBookStatsLine(i, elementsOfLine, out id, out studentId, out bookId, out takeDate, out returnDate);
 
+                Student studentStats = ParseStatsStudent(students, i, studentId);
+
+                Book bookStats = ParseStatsBook(books, i, bookId);
+
                 stats.Add(new BookStat
                 {
                     Id = id,
-                    StudentId = studentId,
-                    BookId = bookId,
+                    Student = studentStats,
+                    Book = bookStats,
                     TakeDate = takeDate,
                     ReturnDate = returnDate,
                 });
             }
             return stats;
         }
-    
+
+        private static Student ParseStatsStudent(List<Student> students, int i, uint studentId)
+        {
+            Student studentStats = null;
+            bool studentFlag = false;
+            foreach (Student student in students)
+            {
+                if (student.Ticket == studentId)
+                {
+                    studentStats = student;
+                    studentFlag = true;
+                    break;
+                }
+            }
+
+            if (!studentFlag)
+            {
+                throw new ArgumentException($"В файле BookStatistics.csv в {i + 1} строке в столбце 2 введен ticket несуществующего читателя");
+            }
+
+            return studentStats;
+        }
+
+        private static Book ParseStatsBook(List<Book> books, int i, uint bookId)
+        {
+            Book bookStats = null;
+            bool bookFlag = false;
+            foreach (Book book in books)
+            {
+                if (book.Id == bookId)
+                {
+                    bookStats = book;
+                    bookFlag = true;
+                    break;
+                }
+            }
+
+            if (!bookFlag)
+            {
+                throw new ArgumentException($"В файле BookStatistics.csv в {i + 1} строке в столбце 3 введено id несуществующей книги");
+            }
+
+            return bookStats;
+        }
+
         public static void ReadBookStatsLine(int i, string[] elementsOfLine, out uint id, out uint studentId, out uint bookId, out DateOnly takeDate, out DateOnly returnDate)
         {
             CheckBookStatsLineLength(i, elementsOfLine);
