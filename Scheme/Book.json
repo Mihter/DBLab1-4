@@ -1,0 +1,29 @@
+{
+  "name": "Book",
+  "columns": [
+    {
+      "name": "id",
+      "type": "uint"
+    },
+    {
+      "name": "Author",
+      "type": "string"      
+    },
+    {
+      "name": "Name",
+      "type": "string"
+    },
+    {
+      "name": "ReleaseDate",
+      "type": "DateOnly"
+    },
+    {
+      "name": "IdBookShelf",
+      "type": "uint"
+    },
+    {
+      "name": "IdShelf",
+      "type": "uint"
+    }
+  ]
+}
