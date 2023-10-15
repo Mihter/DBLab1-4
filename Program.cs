@@ -1,32 +1,25 @@
-﻿namespace DBLab1
+﻿
+
+namespace DBLab1
 {
     class Program
     {
         static void Main()
         {
-            //ФИО и уникальный номер читательского билета
-            Student student = new Student
+            try
             {
-                FullName = "Петя Петров Петрович",
-                Ticket = 1,
-            };
-            var book = new Book
+                List<Student> students = TableParser.ParseStudents(@"..\..\..\Date\Student.csv");
+                List<Book> books = TableParser.ParseBooks(@"..\..\..\Date\Book.csv");
+                List<BookStat> bookStats = TableParser.ParseBookStats(@"..\..\..\Date\BookStatistics.csv", students, books);
+
+                ////вывод всех книг и кто какие брал
+                TableDisplay.ViewTable(students, books, bookStats);
+            }
+            catch (ArgumentException ex) 
             {
-                Id = 1,
-                Author = "Фёдор михайлович Достоевский",
-                Name = "Преступление и наказание",
-                ReleaseDate = new DateOnly(1865, 10, 5),
-                IdBookShelf = 1,
-                IdShelf = 1,
-            };
-            var bookStat = new BookStat
-            {
-                Id = 1,
-                StudentId = student,
-                BookId = book,
-                TakeDate = new DateOnly(2022, 07, 07),
-                ReturnDate = new DateOnly(2022, 12, 12),
-            };
+                Console.Clear();
+                Console.WriteLine("Ошибка:"+ex.Message);
+            }
         }
     }
 }

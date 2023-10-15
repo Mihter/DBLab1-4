@@ -8,7 +8,7 @@ namespace DBLab1
 {
     public class Student
     {
-        public string? FullName { get; set; }
         public uint? Ticket { get; set; }
+        public string? FullName { get; set; }
     }
 }

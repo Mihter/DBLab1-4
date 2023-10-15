@@ -10,8 +10,8 @@ namespace DBLab1
     public class BookStat
     {
         public uint? Id { get; set; }
-        public Student? StudentId { get; set; }
-        public Book? BookId { get; set; }
+        public uint? StudentId { get; set; }
+        public uint? BookId { get; set; }
         public DateOnly? TakeDate { get; set; }
         public DateOnly? ReturnDate { get; set; }
     }
