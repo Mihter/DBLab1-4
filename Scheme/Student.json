@@ -3,11 +3,11 @@
   "columns": [
     {
       "name": "id",
-      "type": "uint",
+      "type": "uint"
     },
     {
       "name": "fullName",
-      "type": "string",
+      "type": "string"
     }
   ]
 }
