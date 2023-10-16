@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DBLab1
 {
-    public class Student
+    public class TableScheme
     {
         public uint? Ticket { get; set; }
         public string? FullName { get; set; }
