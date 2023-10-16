@@ -5,125 +5,125 @@ using System.Text;
 using System.Threading.Tasks;
 using static System.Reflection.Metadata.BlobBuilder;
 
-namespace DBLab1
-{
-    internal class TableDisplay
-    {
-        public static void ViewTable(List<Student> students, List<Book> books, List<BookStat> bookStats)
-        {
-            int maxLenNameBook = FindMaxLenNameBook(books);
-            int maxLenAuthor = FindMaxLenAuthor(books);
-            int maxLenFullNameStudent = FindMaxLenFullNameStudent(students, books, bookStats);
+//namespace DBLab1
+//{
+//    internal class TableDisplay
+//    {
+//        public static void ViewTable(List<Student> students, List<Table> books, List<BookStat> bookStats)
+//        {
+//            int maxLenNameBook = FindMaxLenNameBook(books);
+//            int maxLenAuthor = FindMaxLenAuthor(books);
+//            int maxLenFullNameStudent = FindMaxLenFullNameStudent(students, books, bookStats);
 
-            ReturnHeading(maxLenAuthor, maxLenNameBook, maxLenFullNameStudent);
-            ReturnTable(books, bookStats, maxLenAuthor, maxLenNameBook, maxLenFullNameStudent);
-        }
+//            ReturnHeading(maxLenAuthor, maxLenNameBook, maxLenFullNameStudent);
+//            ReturnTable(books, bookStats, maxLenAuthor, maxLenNameBook, maxLenFullNameStudent);
+//        }
 
-        private static int FindMaxLenNameBook(List<Book> books)
-        {
-            int maxLenNameBook = 0;
-            foreach (Book book in books)
-            {
-                maxLenNameBook = Math.Max(maxLenNameBook, book.Name.Length);
-            }
-            return maxLenNameBook;
-        }
+//        private static int FindMaxLenNameBook(List<Table> books)
+//        {
+//            int maxLenNameBook = 0;
+//            foreach (Table book in books)
+//            {
+//                maxLenNameBook = Math.Max(maxLenNameBook, book.Name.Length);
+//            }
+//            return maxLenNameBook;
+//        }
 
-        private static int FindMaxLenAuthor(List<Book> books)
-        {
-            int maxLenAuthor = 0;
-            foreach (Book book in books)
-            {
-                maxLenAuthor = Math.Max(maxLenAuthor, book.Author.Length);
-            }
-            return maxLenAuthor;
-        }
+//        private static int FindMaxLenAuthor(List<Table> books)
+//        {
+//            int maxLenAuthor = 0;
+//            foreach (Table book in books)
+//            {
+//                maxLenAuthor = Math.Max(maxLenAuthor, book.Author.Length);
+//            }
+//            return maxLenAuthor;
+//        }
 
-        private static int FindMaxLenFullNameStudent(List<Student> students, List<Book> books, List<BookStat> bookStats)
-        {
-            int maxLenNameReader = 0;
+//        private static int FindMaxLenFullNameStudent(List<Student> students, List<Table> books, List<BookStat> bookStats)
+//        {
+//            int maxLenNameReader = 0;
 
-            foreach (Book book in books)
-            {
-                foreach (BookStat stat in bookStats)
-                {
-                    if (stat.Book.Id == book.Id)
-                    {
-                        maxLenNameReader = Math.Max(maxLenNameReader, stat.Student.FullName.Length);
-                    }
-                }
-            }
+//            foreach (Table book in books)
+//            {
+//                foreach (BookStat stat in bookStats)
+//                {
+//                    if (stat.Book.Id == book.Id)
+//                    {
+//                        maxLenNameReader = Math.Max(maxLenNameReader, stat.Student.FullName.Length);
+//                    }
+//                }
+//            }
 
-            return maxLenNameReader;
-        }
+//            return maxLenNameReader;
+//        }
 
-        private static void ReturnHeading(int maxLenAuthor, int maxLenNameBook, int maxLenFullNameStudent)
-        {
-            Console.Write("| ");
-            Console.Write("Автор".PadRight(maxLenAuthor));
-            Console.Write(" | ");
+//        private static void ReturnHeading(int maxLenAuthor, int maxLenNameBook, int maxLenFullNameStudent)
+//        {
+//            Console.Write("| ");
+//            Console.Write("Автор".PadRight(maxLenAuthor));
+//            Console.Write(" | ");
 
-            Console.Write("Название".PadRight(maxLenNameBook));
-            Console.Write(" | ");
+//            Console.Write("Название".PadRight(maxLenNameBook));
+//            Console.Write(" | ");
 
-            Console.Write("Читает".PadRight(maxLenFullNameStudent));
-            Console.Write(" | ");
+//            Console.Write("Читает".PadRight(maxLenFullNameStudent));
+//            Console.Write(" | ");
 
-            Console.Write("Взял".PadRight(10));
-            Console.WriteLine(" |");
+//            Console.Write("Взял".PadRight(10));
+//            Console.WriteLine(" |");
 
-            Console.Write("| ");
-            Console.Write(new string('-', maxLenAuthor));
-            Console.Write(" | ");
+//            Console.Write("| ");
+//            Console.Write(new string('-', maxLenAuthor));
+//            Console.Write(" | ");
 
-            Console.Write(new string('-', maxLenNameBook));
-            Console.Write(" | ");
+//            Console.Write(new string('-', maxLenNameBook));
+//            Console.Write(" | ");
 
-            Console.Write(new string('-', maxLenFullNameStudent));
-            Console.Write(" | ");
+//            Console.Write(new string('-', maxLenFullNameStudent));
+//            Console.Write(" | ");
 
-            Console.Write("".PadRight(10, '-'));
-            Console.WriteLine(" |");
-        }
+//            Console.Write("".PadRight(10, '-'));
+//            Console.WriteLine(" |");
+//        }
 
-        private static void ReturnTable(List<Book> books, List<BookStat> bookStats, int maxLenAuthor, int maxLenNameBook, int maxLenFullNameStudent)
-        {
-            foreach (Book book in books)
-            {
-                Console.Write("| ");
-                Console.Write(book.Author.PadRight(maxLenAuthor));
-                Console.Write(" | ");
+//        private static void ReturnTable(List<Table> books, List<BookStat> bookStats, int maxLenAuthor, int maxLenNameBook, int maxLenFullNameStudent)
+//        {
+//            foreach (Table book in books)
+//            {
+//                Console.Write("| ");
+//                Console.Write(book.Author.PadRight(maxLenAuthor));
+//                Console.Write(" | ");
 
-                Console.Write(book.Name.PadRight(maxLenNameBook));
-                Console.Write(" | ");
+//                Console.Write(book.Name.PadRight(maxLenNameBook));
+//                Console.Write(" | ");
 
-                // проверяем - взял ли кто-то эту книгу и если да, записываем его имя и когда он ёё взял
-                string studentFullName = "";
-                DateOnly? takeDate = DateOnly.MinValue;
-                foreach (BookStat stat in bookStats)
-                {
-                    if (stat.Book.Id == book.Id)
-                    {
-                        studentFullName = stat.Student.FullName;
-                        takeDate = stat.TakeDate;
-                        break;
-                    }
-                }
+//                // проверяем - взял ли кто-то эту книгу и если да, записываем его имя и когда он ёё взял
+//                string studentFullName = "";
+//                DateOnly? takeDate = DateOnly.MinValue;
+//                foreach (BookStat stat in bookStats)
+//                {
+//                    if (stat.Book.Id == book.Id)
+//                    {
+//                        studentFullName = stat.Student.FullName;
+//                        takeDate = stat.TakeDate;
+//                        break;
+//                    }
+//                }
 
-                Console.Write(studentFullName.PadRight(maxLenFullNameStudent));
-                Console.Write(" | ");
+//                Console.Write(studentFullName.PadRight(maxLenFullNameStudent));
+//                Console.Write(" | ");
 
-                if (takeDate != DateOnly.MinValue)
-                {
-                    Console.Write(takeDate);
-                }
-                else
-                {
-                    Console.Write(new string(' ', 10));
-                }
+//                if (takeDate != DateOnly.MinValue)
+//                {
+//                    Console.Write(takeDate);
+//                }
+//                else
+//                {
+//                    Console.Write(new string(' ', 10));
+//                }
 
-                Console.WriteLine(" |");
-            }
-        }
-    }
-}
+//                Console.WriteLine(" |");
+//            }
+//        }
+//    }
+//}
