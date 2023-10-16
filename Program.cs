@@ -17,7 +17,7 @@ namespace DBLab1
                 using FileStream openStream = File.OpenRead(fileName);
                 TableScheme? tableScheme =
                     await JsonSerializer.DeserializeAsync<TableScheme>(openStream);
-                string[] rawRows = TableScheme.Validate(@"..\..\..\Date\Book.csv");
+                string rawRows = TableScheme.Validate(tableScheme);
                 //List<Table> books = TableParser.ParseBooks(@"..\..\..\Date\Book.csv");
                 //List<BookStat> bookStats = TableParser.ParseBookStats(@"..\..\..\Date\BookStatistics.csv", students, books);
 

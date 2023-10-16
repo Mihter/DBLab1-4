@@ -17,15 +17,15 @@ namespace DBLab1
         public List<Column> Columns { get; }
 
         
-        public static string[] Validate(string path)
+        public static string Validate(TableScheme? tableScheme)
         {
-            string[] rawRows = File.ReadAllLines(path);
+            string[] rawRows = ;
 
             for (int i = 0; i < rawRows.Length; i++)
             {
                 string[] elementsOfLine = rawRows[i].Split(";");
 
-                if (!uint.TryParse(elementsOfLine[0], out uint id))
+                if (!type.TryParse(elementsOfLine[0], out uint id))
                 {
                     throw new ArgumentException($"В файле Book.csv в {i + 1} строке в 1 столбце записаны некорректные данные");
                 }
