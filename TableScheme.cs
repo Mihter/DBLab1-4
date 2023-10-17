@@ -23,14 +23,14 @@ namespace DBLab1
 
             for (int i = 0; i < rawRows.Length; i++)
             {
-                string[] elementsOfLine = rawRows[i].Split(";");
+                //string[] elementsOfLine = rawRows[i].Split(";");
 
-                //if (!type.TryParse(elementsOfLine[0], out uint id))
-                //{
-                //    throw new ArgumentException($"В файле Book.csv в {i + 1} строке в 1 столбце записаны некорректные данные");
-                //}
-                //rawRows.Add(new Student { Ticket = id, FullName = elementsOfLine[1] });
+                if (rawRows[i].Length == 4)
+                {
+                throw new ArgumentException($"В файле Book.csv в {i + 1} строке в 1 столбце записаны некорректные данные");
             }
+            //rawRows.Add(new Student { Ticket = id, FullName = elementsOfLine[1] });
+        }
             return rawRows;
         }
         // конструктор, чтобы заполнить объект при создании
